@@ -1,0 +1,56 @@
+TASK DESCRIPTION
+
+The focus of the task is testing candidate's ability to read source
+code. The test task is to extend and fix existing code. Focus on reusing
+existing code to accomplish every sub-task.
+Please treat existing code as a part of working system - it's very similar
+to the one we use in production, so these are almost real tasks you should
+accomplish.
+
+SUBTASK 0. This is to check your basic mysql and system knowledge. First, 
+you should setup your mysql database for the test. For that, you need
+access to your mysql server. Login to it and create a database (for example,
+'php_test'). Then, create few tables in that database. You can do that using
+sql file 'create.sql'.
+After you're done with mysql, edit the file 'config.inc'. There you should
+specify mysql connection credentials, like mysql host, database name, login
+and password.
+Thus, everything should work fine now. You can try to run 'test.php' and see
+if new record is created in the 'site' table.
+
+SUBTASK 1. There's an error in the code waiting to be fixed. You can try to run
+existing php script 'test.php' and see that actual data in database differs from
+the data specified in the script. You should find and fix the bug, so the data
+in db an script should be equal.
+
+SUBTASK 2. Finish description of db_section class which describes 'section' table.
+You can do that similar to the db_site class that describes table 'site' (take a
+look on db_site.inc file).
+
+SUBTASK 2. Add validation for the site-section connection on add/update of
+section. Site is connected to section as one-to-many using section.site_id
+field. Thus, validation is quite simple - you should just check if sute_id
+is filled with id of existing site.
+
+SUBTASK 3. Add duplication restriction - user shouldn't be able to add 
+duplicated entries. Mysql surely will throw an exception if table is designed
+correctly, but we need to do that before mysql. This logic should reside in
+the base class. Note that records could be qunique by one or more fields.
+
+SUBTASK 4. Add datatype validations. Datatype for every field is described in
+its phpdoc comments (like in db_site.inc). When input data and field datatype
+mismatch, you should null the field's value.
+
+SUBTASK 5. Create command-line php script that will show that everything works
+fine (adds/updates/deletes data, tries to insert duplicated values and incorrect
+data, not existing site id, etc. Again, you can extend existing test.php or create
+your own. This subtask is not important really - don't focus on creating some
+user interface here :)
+
+SUMMARY
+
+The end result of your work should be updated and fixed implementation of the
+code that contains fix from subtask 1 and implementation of subtasks 2, 3, 4,
+or (ideally) all of them. Subtask 5 is optional, it's more like a tool for
+your own confidence.
+Failing that please submit any code you wrote trying to solve these problems.
