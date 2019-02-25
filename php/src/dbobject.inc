@@ -254,7 +254,7 @@ class DBObject {
 
             if (!in_array($prop_name, $readonly)) {
                 if (preg_match('|@default\s(.*)|', $doc, $match)) {
-                    if(isset($data[$prop_name])){       // Проверяес существует ли переменая если да то присваем её свойству
+                    if(isset($data[$prop_name])){       // Проверяем существует ли переменная, если да, то присваиваем её свойству
                         $this->$prop_name =$data[$prop_name];
                     }
                     else {

@@ -104,21 +104,21 @@ public function filter_data($data){
 
    }
 public function filter_insert_data($data){
-	$section = parent::filter_insert_data($data);
+	$section = parent::filter_insert_data($data);  // фильтруем данные
 	$site = new db_site();
-	$site->id=$section['site_id'];
-	$site->load();
+	$site->id=$section['site_id'];   // устанавливаем значение id сайта, пришедшее с данными
+	$site->load();                   // проверяем сущесвует ли сайт с данным ID, если нет, то будет ошибка
 	return $section;
 }
 public function filter_update_data($data){
     $this->validate_presence_of($data, 'id');
 	$section['id']=$data['id'];
-    $this->id = $section['id'];
-    $this->load();
-	$section = parent::filter_update_data($data);
+    $this->id = $section['id'];     // устанавливаем id section, пришедшее с данными
+    $this->load();					// проверяем существует ли db_section c данным ID,  если нет, то будет ошибка
+	$section = parent::filter_update_data($data); // фильтруем данные
 	$site = new db_site();
-	$site->id=$section['site_id'];
-	$site->load();
+	$site->id=$section['site_id'];	// устанавливаем значение id сайта, пришедшее с данными
+	$site->load();					// проверяем сущесвует ли сайт с данным ID, если нет, то будет ошибка
 	return $section;
 }
 };
